@@ -1,3 +1,5 @@
+import pytest
+
 # A test that verifies whether 1 + 1 is 2
 def test_one_plus_one():
         assert 1 + 1 == 2
@@ -11,4 +13,7 @@ def test_one_plus_two():
     
 #A test that verifies an exception
 def test_devide_by_zero():
-        num = 1 / 0
+        with pytest.raises(ZeroDivisionError) as e:
+            num = 1 / 0
+        
+        assert 'division by zero' in str(e.value)
